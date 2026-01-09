@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Daily Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">
+        <span class="icon">🏪</span>
+        Shop Daily Dashboard
+      </h1>
+      <div class="date-display" id="currentDate"></div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Left Section: Sales Form -->
+      <section class="card sales-section">
+        <h2 class="section-title">New Sale</h2>
+
+        <form id="salesForm" class="sales-form">
+          <div class="items-container" id="itemsContainer">
+            <!-- Item rows will be added here dynamically -->
+          </div>
+
+          <button type="button" class="btn btn-secondary" id="addItemBtn">
+            <span class="btn-icon">+</span> Add Item
+          </button>
+
+          <div class="total-section">
+            <div class="total-label">Total Amount:</div>
+            <div class="total-amount" id="totalAmount">₹0.00</div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              <span class="btn-icon">💾</span> Save & Print Bill
+            </button>
+            <button type="button" class="btn btn-outline" id="clearBtn">
+              <span class="btn-icon">🗑️</span> Clear
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right Section: Dashboard -->
+      <div class="dashboard-section">
+        <!-- Today's Summary -->
+        <section class="card summary-card">
+          <h2 class="section-title">Today's Summary</h2>
+          <div class="summary-stats">
+            <div class="stat-item">
+              <div class="stat-label">Total Sales</div>
+              <div class="stat-value" id="todayTotal">₹0.00</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Transactions</div>
+              <div class="stat-value" id="todayCount">0</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sales History -->
+        <section class="card history-card">
+          <h2 class="section-title">Sales History</h2>
+          <div class="history-container" id="historyContainer">
+            <div class="loading-message">Loading history...</div>
+          </div>
+
+          <!-- Reset Button -->
+          <div class="reset-section">
+            <p class="reset-warning">⚠️ Clear all sales data from database</p>
+            <button type="button" class="btn btn-danger" id="resetBtn" style="width: 100%;">
+              <span class="btn-icon">🗑️</span> Reset All Data
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Print Bill Template (Hidden) -->
+  <div id="printBill" class="print-only">
+    <div class="bill-container">
+      <div class="bill-header">
+        <h1>SHOP NAME</h1>
+        <p class="bill-address">Your Shop Address Here</p>
+        <p class="bill-date" id="billDate"></p>
+      </div>
+
+      <div class="bill-divider"></div>
+
+      <table class="bill-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody id="billItems">
+          <!-- Bill items will be inserted here -->
+        </tbody>
+      </table>
+
+      <div class="bill-divider"></div>
+
+      <div class="bill-total">
+        <span>TOTAL:</span>
+        <span id="billTotal">₹0.00</span>
+      </div>
+
+      <div class="bill-footer">
+        <p>Thank you for your purchase!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- App Scripts -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

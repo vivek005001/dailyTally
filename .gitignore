@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# Vercel
+.vercel
+
+# Local config (keep config.js out of git for security)
+config.js
